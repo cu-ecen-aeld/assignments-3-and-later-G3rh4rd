@@ -1,0 +1,51 @@
+
+#CROSS_COMPILE=aarch64-none-linux-gnu-
+#CROSS_COMPILE =
+CROSS_COMPILE ?= aarch64-none-linux-gnu-
+#IDIR=/home/gerhard/compiler-toolchains/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/include/c++/10.3.1
+IDIR =
+CC=$(CROSS_COMPILE)gcc
+#CFLAGS=-I$(IDIR)
+
+AS             = $(AT) $(CROSS_COMPILE)as
+LD             = $(AT) $(CROSS_COMPILE)ld
+CC             = $(AT) $(CROSS_COMPILE)gcc
+CPP            = $(AT) $(CROSS_COMPILE)g++
+AR             = $(AT) $(CROSS_COMPILE)ar
+NM             = $(AT) $(CROSS_COMPILE)nm
+STRIP          = $(AT) $(CROSS_COMPILE)strip
+OBJCOPY        = $(AT) $(CROSS_COMPILE)objcopy
+OBJDUMP        = $(AT) $(CROSS_COMPILE)objdump
+
+ODIR=obj
+#LDIR =../lib
+LDIR =
+
+LIBS=
+
+_DEPS =
+DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
+
+_OBJ = writer.o
+OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
+
+
+$(ODIR)/%.o: %.c $(DEPS)
+	$(CC) -c -o $@ $< $(CFLAGS)
+
+writer: $(OBJ)
+	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
+
+.PHONY: clean
+
+clean:
+	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
+
+# writer: writer.o
+# 	cc writer.o -o writer
+# 
+# writer.o: writer.c
+# 	cc -c writer.c -o writer.o
+# 
+# clean:
+# 	rm -f *.o writer
