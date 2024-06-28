@@ -42,7 +42,6 @@ NM             = $(AT) $(CROSS_COMPILE)nm
 STRIP          = $(AT) $(CROSS_COMPILE)strip
 OBJCOPY        = $(AT) $(CROSS_COMPILE)objcopy
 OBJDUMP        = $(AT) $(CROSS_COMPILE)objdump
-#NVCC           = $(AT) $(CUDA_PATH)/bin/nvcc -ccbin $(filter-out $(AT), $(CPP))
 
 # All common header files
 CPPFLAGS += 
@@ -58,7 +57,6 @@ CPP_SRCS :=
 CC_SRCS := 
 
 OBJS := $(C_SRCS:.c=.o) $(CPP_SRCS:.cpp=.o) $(CC_SRCS:.cc=.o)
-#OBJS := $(C_SRCS:.c=.o)
 
 all: $(APP)
 
