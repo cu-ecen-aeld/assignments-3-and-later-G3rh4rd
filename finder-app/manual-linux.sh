@@ -111,8 +111,8 @@ ${CROSS_COMPILE}readelf -a bin/busybox | grep "Shared library"
 
 # TODO: Add library dependencies to rootfs
 echo "Add library dependencies to rootfs"
-LIB_SRC=/home/gerhard/compiler-toolchains/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/libc/lib
-LIB64_SRC=/home/gerhard/compiler-toolchains/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/libc/lib64
+LIB_SRC=../../gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/libc/lib
+LIB64_SRC=../../gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/libc/lib64
 cp ${LIB_SRC}/ld-linux-aarch64.so.1 lib/
 cp ${LIB64_SRC}/ld-2.33.so lib64/
 
@@ -125,9 +125,9 @@ cp ${LIB64_SRC}/libresolv-2.33.so lib64/
 cp ${LIB64_SRC}/libc.so.6 lib64/
 cp ${LIB64_SRC}/libc-2.33.so lib64/
 
-cp /home/gerhard/compiler-toolchains/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/lib64/libgcc_s.so.1 lib64/
-cp /home/gerhard/compiler-toolchains/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/lib64/libstdc++.so.6 lib64/
-cp /home/gerhard/compiler-toolchains/gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/lib64/libstdc++.so.6.0.28 lib64/
+cp ../../gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/lib64/libgcc_s.so.1 lib64/
+cp ../../gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/lib64/libstdc++.so.6 lib64/
+cp ../../gcc-arm-10.3-2021.07-x86_64-aarch64-none-linux-gnu/aarch64-none-linux-gnu/lib64/libstdc++.so.6.0.28 lib64/
 
 # TODO: Make device nodes
 echo "Make device nodes"
